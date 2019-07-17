@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic; 
+					
+public class Program
+{
+	public static void Main()
+	{
+		int i;
+		int [] ListToSort=new int[11];
+		List<int> U=new List<int>();
+		bool FNumber;
+				
+		for (i=1; i<=10; i++)
+		{
+			Console.WriteLine("Veuillez entrer le nombre entier n°" + i + ".");
+			ListToSort[i] = Int32.Parse(Console.ReadLine());
+		}
+		
+		FNumber = true;
+		
+		foreach (int Number in ListToSort)
+		{
+			if (FNumber==true)
+			{
+				U.Add(Number);
+			}
+				
+			if (FNumber==false)
+			{		
+				foreach (int UNumber in U)
+				{
+					if (Number == UNumber) 
+					{
+						goto FollowingNumber;
+					}
+				}
+				
+				U.Add(Number);
+						
+			}
+			
+			FNumber=false;
+			
+		FollowingNumber:
+			;	
+		}
+		
+		U.RemoveAt(0);
+		foreach (int UNumber in U)
+		{
+			Console.WriteLine(UNumber);
+		}
+		
+	}
+}
